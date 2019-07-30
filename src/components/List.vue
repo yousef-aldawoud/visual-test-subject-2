@@ -4,7 +4,7 @@
         <input type="text" name="input" v-on:keyup.enter="addItem" id="input" v-model="inputValue" ><span class="plus-icon" @click="addItem">+</span>
         <div class="error">{{error}}</div>
         <hr style="width:50%">
-        <Item v-on:delete="deleteItem(index)" v-for="( item,index) in items" :key="index" :text="item"></Item>
+        <Item v-on:delete="deleteItem(index)" :icon-index="iconIndex" v-for="( item,index) in items" :key="index" :text="item"></Item>
     </div>
 </template>
 <script>
@@ -15,6 +15,7 @@ export default {
     },
     data(){
         return{
+            iconIndex:0,
             error:"",
             inputValue:"",
             items:[
@@ -33,6 +34,8 @@ export default {
             this.inputValue = "";
             this.error = "";
         }
+    },mounted(){
+         this.iconIndex = Math.floor(Math.random()*(2)+0);
     }
 }
 </script>
