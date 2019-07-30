@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>HhdawFAWCVUDWA</h1>
-        <input type="text" name="input" id="input" v-model="inputValue" ><span class="plus-icon" @click="addItem">+</span>
+        <input type="text" name="input" v-on:keyup.enter="addItem" id="input" v-model="inputValue" ><span class="plus-icon" @click="addItem">+</span>
         <div class="error">{{error}}</div>
         <hr style="width:50%">
         <Item v-on:delete="deleteItem(index)" v-for="( item,index) in items" :key="index" :text="item"></Item>
@@ -18,8 +18,6 @@ export default {
             error:"",
             inputValue:"",
             items:[
-                "Hello wolrd",
-                "lol"
             ]
         }
     },methods:{
